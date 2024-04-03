@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useSeoMeta({
+  title: "O Aplicativo de Gerenciamento de Ideias para Desenvolvedores",
+  description:
+    "Capture, organize e compartilhe suas ideias de código. Markdown, links, anotações rápidas. Colabore ou mantenha privado. Boost sua produtividade!",
+})
+</script>
 
 <template>
-  <h1>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum reprehenderit
-    rem voluptates magni minus ut quae commodi temporibus, aliquam quisquam
-    tempora! Totam exercitationem rerum ea quam, debitis quae voluptatem ipsum.
-  </h1>
+  <h1>LANDING PAGE</h1>
 </template>

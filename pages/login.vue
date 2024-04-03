@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LoginView from "~/modules/auth/views/LoginView.vue"
+
 useSeoMeta({
   title: "Entrar",
   description: "Entre e aproveite todas as funcionalidades",
@@ -6,5 +8,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <h1>Login</h1>
+  <LoginView />
 </template>

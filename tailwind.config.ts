@@ -1,6 +1,6 @@
 export default {
   theme: {},
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
   content: [
     "components/**/*.{vue,js,ts}",
     "layouts/**/*.vue",

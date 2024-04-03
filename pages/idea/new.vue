@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CreateNewView from "~/modules/ideas/views/CreateNew.vue"
+
 useSeoMeta({
   title: "Nova ideia",
   description: "Criar uma nova ideia",
@@ -6,5 +8,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <h1>Criar ideia</h1>
+  <CreateNewView />
 </template>

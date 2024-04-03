@@ -1,0 +1,5 @@
+body,
+html,
+#__nuxt {
+  font-family: "Fira Sans", system-ui, sans-serif;
+}

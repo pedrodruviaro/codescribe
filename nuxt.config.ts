@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxtjs/google-fonts"],
 
   colorMode: {
-    preference: "dark",
+    preference: "system",
     fallback: "dark",
     storageKey: "codescribe-color-mode",
   },

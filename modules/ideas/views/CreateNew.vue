@@ -29,28 +29,33 @@ function handlePreventTabKey(event: KeyboardEvent) {
       </div>
     </UCard>
 
-    <div class="grid md:grid-cols-2 gap-4 mt-4">
-      <div>
-        <UBadge color="white" variant="solid" class="mb-2"
-          >Editor em markdown</UBadge
-        >
-        <UTextarea
-          color="primary"
-          variant="outline"
-          v-model="description"
-          :rows="20"
-          @keydown="handlePreventTabKey"
-        />
-      </div>
+    <UCard class="mt-4">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <UBadge color="white" variant="solid" class="mb-2"
+            >Editor em markdown</UBadge
+          >
+          <UTextarea
+            color="primary"
+            variant="outline"
+            v-model="description"
+            :rows="20"
+            @keydown="handlePreventTabKey"
+          />
+        </div>
 
-      <div class="grid grid-rows-[max-content_1fr]">
-        <UBadge color="white" variant="solid" class="mb-2 max-w-max"
-          >Visualize em tempo real</UBadge
-        >
-        <UCard>
-          <div class="prose prose-invert" v-html="markdownDescription"></div>
-        </UCard>
+        <div class="grid grid-rows-[max-content_1fr]">
+          <UBadge color="white" variant="solid" class="mb-2 max-w-max"
+            >Visualize em tempo real</UBadge
+          >
+          <UCard>
+            <div
+              class="prose prose-sm lg:prose-base dark:prose-invert"
+              v-html="markdownDescription"
+            ></div>
+          </UCard>
+        </div>
       </div>
-    </div>
+    </UCard>
   </BaseViewWrapper>
 </template>

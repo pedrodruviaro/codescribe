@@ -1,61 +1,61 @@
 <script setup lang="ts">
 import { marked } from "marked"
+import IdeaCodeEditor from "~/modules/ideas/components/IdeaCodeEditor.vue"
+import IdeaMarkdownEditor from "~/modules/ideas/components/IdeaMarkdownEditor.vue"
+import IdeaHeadlineEditor from "~/modules/ideas/components/IdeaHeadlineEditor.vue"
 
+// headline
+async function handleSaveIdea() {
+  const newIdea = {
+    title: title.value,
+    description: description.value,
+    new_code: code.value,
+    old_code: code.value,
+    lang: selectedLang.value,
+  }
+
+  console.log(newIdea)
+}
+
+// markdown
 const description = ref("")
+const title = ref("")
+const isMarkdownPreviewOpen = ref(false)
 
 const markdownDescription = computed(() => {
   return marked(description.value)
 })
 
-function handlePreventTabKey(event: KeyboardEvent) {
-  event.key === "Tab" && event.preventDefault()
+// code editor
+const langs = ["plaintext", "html", "css", "javascript", "typescript", "python"]
+const code = ref("")
+const selectedLang = ref("")
+
+const EDITOR_OPTIONS = {
+  automaticLayout: true,
+  theme: "vs-dark",
 }
 </script>
 
 <template>
-  <BaseViewWrapper>
-    <UCard>
-      <div
-        class="flex flex-col gap-4 items-start md:flex-row md:items-center md:justify-between"
-      >
-        <UInput
-          color="primary"
-          variant="outline"
-          placeholder="Minha ideia genial é..."
-          class="flex-1 w-full"
-        />
+  <BaseViewWrapper class="grid gap-4">
+    <IdeaHeadlineEditor
+      v-model:title="title"
+      @wants-to-save-idea="handleSaveIdea"
+    />
 
-        <UButton variant="outline">Salvar</UButton>
-      </div>
-    </UCard>
+    <IdeaMarkdownEditor
+      v-model:description="description"
+      v-model:preview="isMarkdownPreviewOpen"
+      :markdownDescription="markdownDescription"
+      :isPreviewOpen="isMarkdownPreviewOpen"
+    />
 
-    <UCard class="mt-4">
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <UBadge color="white" variant="solid" class="mb-2"
-            >Editor em markdown</UBadge
-          >
-          <UTextarea
-            color="primary"
-            variant="outline"
-            v-model="description"
-            :rows="20"
-            @keydown="handlePreventTabKey"
-          />
-        </div>
-
-        <div class="grid grid-rows-[max-content_1fr]">
-          <UBadge color="white" variant="solid" class="mb-2 max-w-max"
-            >Visualize em tempo real</UBadge
-          >
-          <UCard>
-            <div
-              class="prose prose-sm lg:prose-base dark:prose-invert"
-              v-html="markdownDescription"
-            ></div>
-          </UCard>
-        </div>
-      </div>
-    </UCard>
+    <IdeaCodeEditor
+      :editor-options="EDITOR_OPTIONS"
+      :language-options="langs"
+      v-model:selectedLang="selectedLang"
+      v-model:code="code"
+    />
   </BaseViewWrapper>
 </template>

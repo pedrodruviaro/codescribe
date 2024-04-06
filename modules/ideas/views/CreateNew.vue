@@ -52,10 +52,10 @@ const EDITOR_OPTIONS = {
     />
 
     <IdeaCodeEditor
-      :editor-options="EDITOR_OPTIONS"
-      :language-options="langs"
       v-model:selectedLang="selectedLang"
       v-model:code="code"
+      :editor-options="EDITOR_OPTIONS"
+      :language-options="langs"
     />
   </BaseViewWrapper>
 </template>

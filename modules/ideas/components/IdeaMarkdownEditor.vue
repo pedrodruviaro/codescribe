@@ -12,13 +12,22 @@ const description = defineModel<string>("description", { required: true })
 
 const preview = defineModel<boolean>("preview", { required: true })
 
-function handlePreventTabKey(event: KeyboardEvent) {
-  event.key === "Tab" && event.preventDefault()
-}
-
 const gridCols = computed(() => {
   return props.isPreviewOpen ? "md:grid-cols-2" : "md:grid-cols-1"
 })
+
+const previewButtonsOptions = computed(() => {
+  return {
+    icon: props.isPreviewOpen ? "i-heroicons-eye-slash" : "i-heroicons-eye",
+    label: props.isPreviewOpen
+      ? "Fechar visualização"
+      : "Visualize em tempo real",
+  }
+})
+
+function handlePreventTabKey(event: KeyboardEvent) {
+  event.key === "Tab" && event.preventDefault()
+}
 </script>
 
 <template>
@@ -33,9 +42,13 @@ const gridCols = computed(() => {
         >
       </UTooltip>
 
-      <UButton size="2xs" variant="outline" @click="preview = !preview"
-        >Visualize em tempo real</UButton
-      >
+      <UButton
+        size="2xs"
+        variant="outline"
+        :icon="previewButtonsOptions.icon"
+        :label="previewButtonsOptions.label"
+        @click="preview = !preview"
+      />
     </div>
 
     <div class="grid gap-4" :class="[gridCols]">

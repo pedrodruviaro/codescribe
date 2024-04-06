@@ -38,7 +38,7 @@ const EDITOR_OPTIONS = {
 </script>
 
 <template>
-  <BaseViewWrapper class="grid gap-4">
+  <div class="grid gap-4">
     <IdeaHeadlineEditor
       v-model:title="title"
       @wants-to-save-idea="handleSaveIdea"
@@ -57,5 +57,5 @@ const EDITOR_OPTIONS = {
       :editor-options="EDITOR_OPTIONS"
       :language-options="langs"
     />
-  </BaseViewWrapper>
+  </div>
 </template>

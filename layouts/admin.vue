@@ -29,7 +29,7 @@ function handleLogout() {
       @wants-navigate-to-create-idea="handleNavigateToCreateIdea"
       @wants-sign-out="handleLogout"
     />
-    <BaseViewWrapper>
+    <BaseViewWrapper class="min-h-[93vh]">
       <slot />
     </BaseViewWrapper>
     <LayoutFooter />

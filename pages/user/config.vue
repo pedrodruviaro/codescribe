@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import UserConfigView from "~/modules/user/views/Config.vue"
+
 definePageMeta({
   layout: "admin",
 })
@@ -10,5 +12,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <h1>Configuracoes do usuario</h1>
+  <UserConfigView />
 </template>

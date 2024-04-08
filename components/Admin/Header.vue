@@ -61,7 +61,6 @@ const dropdownOptions = [
         <UDropdown
           :items="dropdownOptions"
           :ui="{ item: { disabled: 'cursor-text select-text' } }"
-          :popper="{ placement: 'bottom-start' }"
         >
           <UAvatar :src="props.avatarUrl" />
 

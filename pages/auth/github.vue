@@ -1,16 +1,11 @@
 <script setup lang="ts">
-const router = useRouter()
+import OAuthRedirectView from "~/modules/auth/views/OAuthRedirectView.vue"
 
-async function navigateToPanel() {
-  await new Promise((resolve) => setTimeout(resolve, 2_000))
-  router.push("/dashboard")
-}
-
-onMounted(() => {
-  navigateToPanel()
+useSeoMeta({
+  title: "Redirectionando...",
 })
 </script>
 
 <template>
-  <h2>Redirecionando...</h2>
+  <OAuthRedirectView />
 </template>

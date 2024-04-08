@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxtjs/google-fonts", "nuxt-monaco-editor"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxtjs/google-fonts",
+    "nuxt-monaco-editor",
+    "@nuxtjs/supabase",
+  ],
 
   colorMode: {
     preference: "dark",
@@ -19,5 +24,19 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     configPath: "~/tailwind.config.ts",
+  },
+
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.SITE_URL,
+    },
+  },
+
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/auth/github",
+      exclude: ["/"],
+    },
   },
 })

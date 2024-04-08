@@ -7,13 +7,32 @@ const props = defineProps<{
 const code = defineModel<string>("code", { required: true })
 
 const selectedLang = defineModel<string>("selectedLang", { required: true })
+
+const editorDiffOpen = defineModel<boolean>("editorDiffOpen", {
+  required: true,
+})
+
+const gridClass = computed(() => {
+  return editorDiffOpen.value ? "lg:grid-cols-2" : "lg:grid-cols-1"
+})
 </script>
 
 <template>
   <UCard class="overflow-auto">
-    <USelect v-model="selectedLang" :options="props.languageOptions" />
+    <div class="grid gap-2">
+      <p>Selecione a linguagem</p>
+      <USelect v-model="selectedLang" :options="props.languageOptions" />
+    </div>
 
-    <div class="grid gap-4 lg:grid-cols-2 mt-4">
+    <UButton
+      @click="editorDiffOpen = !editorDiffOpen"
+      size="2xs"
+      variant="outline"
+      class="mt-8 mb-2"
+      >Compare com a última versão</UButton
+    >
+
+    <div class="grid gap-4 mt-4" :class="[gridClass]">
       <MonacoEditor
         v-model="code"
         :lang="selectedLang"
@@ -27,6 +46,7 @@ const selectedLang = defineModel<string>("selectedLang", { required: true })
         :original="code"
         :options="props.editorOptions"
         class="min-h-[500px]"
+        v-if="editorDiffOpen"
       >
         Carregando...
       </MonacoDiffEditor>

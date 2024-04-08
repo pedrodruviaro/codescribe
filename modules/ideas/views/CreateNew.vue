@@ -5,10 +5,14 @@ import IdeaMarkdownEditor from "~/modules/ideas/components/IdeaMarkdownEditor.vu
 import IdeaHeadlineEditor from "~/modules/ideas/components/IdeaHeadlineEditor.vue"
 
 // headline
+const title = ref("")
+const isPublic = ref(false)
+
 async function handleSaveIdea() {
   const newIdea = {
     title: title.value,
     description: description.value,
+    is_public: isPublic.value,
     new_code: code.value,
     old_code: code.value,
     lang: selectedLang.value,
@@ -19,7 +23,6 @@ async function handleSaveIdea() {
 
 // markdown
 const description = ref("")
-const title = ref("")
 const isMarkdownPreviewOpen = ref(false)
 
 const markdownDescription = computed(() => {
@@ -30,6 +33,7 @@ const markdownDescription = computed(() => {
 const langs = ["plaintext", "html", "css", "javascript", "typescript", "python"]
 const code = ref("")
 const selectedLang = ref("")
+const isCodeEditorDiffOpen = ref(false)
 
 const EDITOR_OPTIONS = {
   automaticLayout: true,
@@ -40,6 +44,7 @@ const EDITOR_OPTIONS = {
 <template>
   <div class="grid gap-4">
     <IdeaHeadlineEditor
+      v-model:isPublic="isPublic"
       v-model:title="title"
       @wants-to-save-idea="handleSaveIdea"
     />
@@ -48,12 +53,12 @@ const EDITOR_OPTIONS = {
       v-model:description="description"
       v-model:preview="isMarkdownPreviewOpen"
       :markdownDescription="markdownDescription"
-      :isPreviewOpen="isMarkdownPreviewOpen"
     />
 
     <IdeaCodeEditor
       v-model:selectedLang="selectedLang"
       v-model:code="code"
+      v-model:editorDiffOpen="isCodeEditorDiffOpen"
       :editor-options="EDITOR_OPTIONS"
       :language-options="langs"
     />

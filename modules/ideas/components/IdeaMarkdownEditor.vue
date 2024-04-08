@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
   markdownDescription: string | Promise<string>
-  isPreviewOpen: boolean
 }>()
 
 const emits = defineEmits<{
@@ -13,15 +12,13 @@ const description = defineModel<string>("description", { required: true })
 const preview = defineModel<boolean>("preview", { required: true })
 
 const gridCols = computed(() => {
-  return props.isPreviewOpen ? "md:grid-cols-2" : "md:grid-cols-1"
+  return preview.value ? "md:grid-cols-2" : "md:grid-cols-1"
 })
 
 const previewButtonsOptions = computed(() => {
   return {
-    icon: props.isPreviewOpen ? "i-heroicons-eye-slash" : "i-heroicons-eye",
-    label: props.isPreviewOpen
-      ? "Fechar visualização"
-      : "Visualize em tempo real",
+    icon: preview.value ? "i-heroicons-eye-slash" : "i-heroicons-eye",
+    label: preview.value ? "Fechar visualização" : "Visualize em tempo real",
   }
 })
 
@@ -63,10 +60,7 @@ function handlePreventTabKey(event: KeyboardEvent) {
         />
       </div>
 
-      <div
-        class="grid grid-rows-[max-content_1fr] col-span-1"
-        v-if="isPreviewOpen"
-      >
+      <div class="grid grid-rows-[max-content_1fr] col-span-1" v-if="preview">
         <div
           class="h-[400px] overflow-auto border border-zinc-500 dark:border-zinc-800 px-2.5 py-1.5 rounded-md"
         >

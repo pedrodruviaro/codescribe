@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const title = defineModel("title", { required: true })
+const title = defineModel<string>("title", { required: true })
+
+const isPublic = defineModel<boolean>("isPublic", { required: true })
 
 const emits = defineEmits<{
   (e: "wants-to-save-idea"): void
@@ -18,6 +20,8 @@ const emits = defineEmits<{
         class="flex-1 w-full"
         v-model="title"
       />
+
+      <UCheckbox v-model="isPublic" name="notifications" label="Pública" />
 
       <UButton variant="outline" @click="emits('wants-to-save-idea')"
         >Salvar</UButton

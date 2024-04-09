@@ -13,7 +13,12 @@
           <p class="font-bold text-xl">codescribe</p>
         </div>
 
-        <UButton size="sm" variant="outline" label="Ver perfil público" />
+        <UButton
+          size="sm"
+          variant="outline"
+          trailing-icon="i-heroicons-arrow-up-right-20-solid"
+          label="Ver perfil público"
+        />
       </div>
     </template>
 
@@ -23,6 +28,9 @@
         <div class="grid md:grid-cols-2 gap-2">
           <UInput class="w-full" placeholder="Nome" />
           <UInput class="w-full" placeholder="Cargo" />
+        </div>
+        <div class="mb-2">
+          <UInput class="w-full" placeholder="Site" />
         </div>
         <UTextarea placeholder="Bio" :rows="8" />
         <UButton type="submit" label="Salvar alterações" />

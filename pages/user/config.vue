@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UserConfigView from "~/modules/user/views/Config.vue"
+import UserConfigView from "~/modules/user/views/ConfigView.vue"
 
 definePageMeta({
   layout: "admin",

@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   (e: "wants-navigate-to-dashboard"): void
-  (e: "wants-navigate-to-configs"): void
+  (e: "wants-navigate-to-my-profile"): void
   (e: "wants-navigate-to-create-idea"): void
   (e: "wants-sign-out"): void
 }>()
@@ -34,7 +34,7 @@ const dropdownOptions = [
     {
       label: "Configurações",
       icon: "i-heroicons-cog-8-tooth",
-      click: () => emits("wants-navigate-to-configs"),
+      click: () => emits("wants-navigate-to-my-profile"),
     },
   ],
   [

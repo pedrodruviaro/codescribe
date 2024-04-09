@@ -5,7 +5,7 @@ function handleNavigateToDashboard() {
   router.push("/dashboard")
 }
 
-function handleNavigateToConfigs() {
+function handleNavigateToMyProfile() {
   router.push("/user/config")
 }
 
@@ -24,7 +24,7 @@ function handleLogout() {
       :username="'username'"
       :name="'name'"
       :avatar-url="'https://avatars.githubusercontent.com/u/739984?v=4'"
-      @wants-navigate-to-configs="handleNavigateToConfigs"
+      @wants-navigate-to-my-profile="handleNavigateToMyProfile"
       @wants-navigate-to-dashboard="handleNavigateToDashboard"
       @wants-navigate-to-create-idea="handleNavigateToCreateIdea"
       @wants-sign-out="handleLogout"
